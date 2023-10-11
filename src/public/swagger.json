@@ -1,0 +1,1944 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "LinkIO API",
+      "version": "1.0.0",
+      "description": "API for digital dentistry",
+      "contact": {
+        "name": "Caio Mikoszewski",
+        "email": "caio.mikoszewski@arrowdigital.group"
+      },
+      "license": {
+        "name": "AllRights-Attribution-NonCommercial-NoDerivatives 4.1",
+        "url": "https://github.com/arrow-digital/license"
+      }
+    },
+    "servers": [
+      {
+        "url": "https://vastly-cheerful-cougar.ngrok-free.app",
+        "description": "NGROK tunnel server"
+      },
+      {
+        "url": "http://localhost:8080",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/api/models/clinic": {
+        "get": {
+          "summary": "Get all clinics",
+          "tags": [
+            "Clinic"
+          ],
+          "responses": {
+            "200": {
+              "description": "List of clinics",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Clinic"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new clinic",
+          "tags": [
+            "Clinic"
+          ],
+          "requestBody": {
+            "description": "Clinic object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clinic"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created clinic",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Clinic"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/clinic/{id}": {
+        "get": {
+          "summary": "Get a clinic by ID",
+          "tags": [
+            "Clinic"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the clinic to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Clinic object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Clinic"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a clinic by ID",
+          "tags": [
+            "Clinic"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the clinic to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Clinic object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Clinic"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated clinic",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a clinic by ID",
+          "tags": [
+            "Clinic"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the clinic to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted clinic",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/collaborator": {
+        "get": {
+            "summary": "Get all collaborators",
+            "tags": [
+              "Collaborator"
+            ],
+            "responses": {
+              "200": {
+                "description": "List of collaborators",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Collaborator"
+                      }
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal server error"
+              }
+            }
+        },
+        "post": {
+            "summary": "Create a new collaborator",
+            "tags": [
+              "Collaborator"
+            ],
+            "requestBody": {
+              "description": "Collaborator object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Collaborator"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Created collaborator",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Collaborator"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal server error"
+              }
+            }
+        }
+      },
+      "/api/models/collaborator/{id}": {
+        "get": {
+          "summary": "Get a collaborator by ID",
+          "tags": [
+            "Collaborator"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the collaborator to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Collaborator object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Collaborator"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a collaborator by ID",
+          "tags": [
+            "Collaborator"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the collaborator to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Collaborator object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Collaborator"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated collaborator",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a collaborator by ID",
+          "tags": [
+            "Collaborator"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the collaborator to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted collaborator",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/lab": {
+        "get": {
+          "summary": "Get all labs",
+          "tags": [
+            "Lab"
+          ],
+          "responses": {
+            "200": {
+              "description": "List of labs",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Lab"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new lab",
+          "tags": [
+            "Lab"
+          ],
+          "requestBody": {
+            "description": "Lab object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lab"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created lab",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Lab"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/lab/{id}": {
+        "get": {
+          "summary": "Get a lab by ID",
+          "tags": [
+            "Lab"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the lab to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lab object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Lab"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a lab by ID",
+          "tags": [
+            "Lab"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the lab to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Lab object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lab"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated lab",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a lab by ID",
+          "tags": [
+            "Lab"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the lab to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted lab",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/inventory": {
+        "get": {
+          "summary": "Get all inventories",
+          "tags": [
+            "Inventory"
+          ],
+          "responses": {
+            "200": {
+              "description": "List of inventories",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Inventory"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new inventory",
+          "tags": [
+            "Inventory"
+          ],
+          "requestBody": {
+            "description": "Inventory object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created inventory",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Inventory"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/inventory/{id}": {
+        "get": {
+          "summary": "Get a inventory by ID",
+          "tags": [
+            "Inventory"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the inventory to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Inventory object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Inventory"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a inventory by ID",
+          "tags": [
+            "Inventory"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the inventory to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Inventory object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated inventory",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a inventory by ID",
+          "tags": [
+            "Inventory"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the inventory to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted inventory",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/order": {
+        "get": {
+          "summary": "Get all orders",
+          "tags": [
+            "Order"
+          ],
+          "responses": {
+            "200": {
+              "description": "List of orders",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Order"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new order",
+          "tags": [
+            "Order"
+          ],
+          "requestBody": {
+            "description": "Order object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created order",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/order/{id}": {
+        "get": {
+          "summary": "Get a order by ID",
+          "tags": [
+            "Order"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the order to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Order object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a order by ID",
+          "tags": [
+            "Order"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the order to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Order object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated order",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a order by ID",
+          "tags": [
+            "Order"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the order to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted order",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/pandaScan": {
+        "get": {
+          "summary": "Get all pandaScans",
+          "tags": [
+            "PandaScan"
+          ],
+          "responses": {
+            "200": {
+              "description": "List of pandaScans",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PandaScan"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new pandaScan",
+          "tags": [
+            "PandaScan"
+          ],
+          "requestBody": {
+            "description": "PandaScan object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PandaScan"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created pandaScan",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PandaScan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/pandaScan/{id}": {
+        "get": {
+          "summary": "Get a pandaScan by ID",
+          "tags": [
+            "PandaScan"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the pandaScan to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "PandaScan object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/PandaScan"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a pandaScan by ID",
+          "tags": [
+            "PandaScan"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the pandaScan to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "PandaScan object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PandaScan"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated pandaScan",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a pandaScan by ID",
+          "tags": [
+            "PandaScan"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the pandaScan to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted pandaScan",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/service": {
+        "get": {
+          "summary": "Get all services",
+          "tags": [
+            "Service"
+          ],
+          "responses": {
+            "200": {
+              "description": "List of services",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Service"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new service",
+          "tags": [
+            "Service"
+          ],
+          "requestBody": {
+            "description": "Service object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created service",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Service"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/service/{id}": {
+        "get": {
+          "summary": "Get a service by ID",
+          "tags": [
+            "Service"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the service to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Service object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Service"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a service by ID",
+          "tags": [
+            "Service"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the service to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Service object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated service",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a service by ID",
+          "tags": [
+            "Service"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the service to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted service",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/user": {
+        "get": {
+          "summary": "Get all users",
+          "tags": [
+            "User"
+          ],
+          "responses": {
+            "200": {
+              "description": "List of users",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new user",
+          "tags": [
+            "User"
+          ],
+          "requestBody": {
+            "description": "User object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Created user",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/api/models/user/{id}": {
+        "get": {
+          "summary": "Get a user by ID",
+          "tags": [
+            "User"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the user to retrieve",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User object",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a user by ID",
+          "tags": [
+            "User"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the user to update",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "User object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Updated user",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a user by ID",
+          "tags": [
+            "User"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the user to delete",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Deleted user",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Clinic": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "address": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "balance": {
+                    "items": {
+                        "properties": {
+                            "_id": {
+                                "description": "must be an objectId and is optional",
+                                "type": "string"
+                            },
+                            "createdAt": {
+                                "description": "must be a date and is required",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "expiresAt": {
+                                "description": "must be a date and is required",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "order": {
+                                "description": "must be an objectId and is optional",
+                                "type": "string"
+                            },
+                            "service": {
+                                "description": "must be an objectId and is optional, references the service in the order",
+                                "type": "string"
+                            },
+                            "value": {
+                                "description": "must be a number and is required",
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "value",
+                            "createdAt",
+                            "expiresAt"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "dentists": {
+                    "description": "must be an array of objects and is required",
+                    "items": {
+                        "properties": {},
+                        "required": [],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "email": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "orders": {
+                    "description": "must be an array of objectIds and is required",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "outstandingBalance": {
+                    "description": "must be a number and is required",
+                    "type": "number"
+                },
+                "patients": {
+                    "description": "must be an array of objects and is required",
+                    "items": {
+                        "properties": {},
+                        "required": [],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "phone": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "taxid": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "address",
+                "patients",
+                "dentists",
+                "orders",
+                "outstandingBalance"
+            ],
+            "title": "Clinic"
+        },
+        "Collaborator": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "address": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "bankInfo": {
+                    "description": "must be an object and is optional",
+                    "properties": {},
+                    "type": "object"
+                },
+                "comission": {
+                    "description": "must be a number and is optional",
+                    "type": "number"
+                },
+                "email": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "lab": {
+                    "description": "must be an objectId and is optional",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "salary": {
+                    "description": "must be a number and is optional",
+                    "type": "number"
+                },
+                "taxid": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "Collaborator"
+        },
+        "Inventory": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "amount": {
+                    "description": "must be a number and is optional",
+                    "type": "number"
+                },
+                "clinic": {
+                    "description": "must be an objectId from the clinic collection and is optional",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "lab": {
+                    "description": "must be an objectId from the lab collection and is optional",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "must be a number and is optional",
+                    "type": "number"
+                }
+            },
+            "title": "Inventory"
+        },
+        "Lab": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "address": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "clinics": {
+                    "description": "must be an array of objectIds from the clinics collection and is optional",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "collaborators": {
+                    "description": "must be an array of objectIds from the users collection and is optional",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "email": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "inventory": {
+                    "description": "must be an array of objectIds from the inventory collection and is optional",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "orders": {
+                    "description": "must be an array of objectIds from the orders collection and is optional",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "phone": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "revenue": {
+                    "description": "must be an array of objects and is required",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "services": {
+                    "description": "must be an array of objectIds from the services collection and is optional",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "taxid": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "users": {
+                    "description": "must be an array of objectIds from the users collection and is optional",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "name",
+                "revenue"
+            ],
+            "title": "Lab"
+        },
+        "Order": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "clinic": {
+                    "description": "must be an objectId from the clinic collection and is optional",
+                    "type": "string"
+                },
+                "comments": {
+                    "description": "must be an array of objects and is required",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "createdAt": {
+                    "description": "must be a date and is required",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "dentist": {
+                    "description": "must be an objectId from the dentists array in the clinic collection and is optional",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "expiresAt": {
+                    "description": "must be a date and is required",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "lab": {
+                    "description": "must be an objectId from the lab collection and is optional",
+                    "type": "string"
+                },
+                "patient": {
+                    "description": "must be an objectId from the patients array in the clinic collection and is optional",
+                    "type": "string"
+                },
+                "services": {
+                    "description": "must be an array of objects and is required",
+                    "items": {
+                        "properties": {
+                            "_id": {
+                                "description": "must be an objectId and is optional",
+                                "type": "string"
+                            },
+                            "collaborator": {
+                                "description": "must be an objectId from the collaborator collection and is optional",
+                                "type": "string"
+                            },
+                            "createdAt": {
+                                "description": "must be a date and is required",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "createdBy": {
+                                "description": "must be an objectId from the user collection and is optional",
+                                "type": "string"
+                            },
+                            "discount": {
+                                "description": "must be a number and is required",
+                                "type": "number"
+                            },
+                            "expiresAt": {
+                                "description": "must be a date and is required",
+                                "format": "date-time",
+                                "type": "string"
+                            },
+                            "finalvalue": {
+                                "description": "must be a number and is required",
+                                "type": "number"
+                            },
+                            "jaw": {
+                                "description": "must be an array of numbers and is optional",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": "array"
+                            },
+                            "service": {
+                                "description": "must be an objectId from the service collection and is optional",
+                                "type": "string"
+                            },
+                            "state": {
+                                "description": "must be a string and is required",
+                                "type": "string"
+                            },
+                            "teeth": {
+                                "description": "must be an array of numbers and is optional",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "createdAt",
+                            "expiresAt",
+                            "finalvalue",
+                            "state",
+                            "discount"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "state": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "must be an array of strings and is required",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "status",
+                "services",
+                "description",
+                "state",
+                "createdAt",
+                "expiresAt",
+                "comments",
+                "tag"
+            ],
+            "title": "Order"
+        },
+        "PandaScan": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "code": {
+                    "description": "must be a number and is required",
+                    "type": "number"
+                },
+                "color": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "doctorName": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "expires": {
+                    "description": "must be a date and is required",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "material": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "notes": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "number": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "patientName": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "referenceOrder": {
+                    "type": "string"
+                },
+                "referenceService": {
+                    "type": "string"
+                },
+                "size": {
+                    "description": "must be a number and is required",
+                    "type": "number"
+                },
+                "sourceName": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "targetCreditCode": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "targetName": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "time": {
+                    "description": "must be a date and is required",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sourceName",
+                "targetName",
+                "targetCreditCode",
+                "name",
+                "type",
+                "patientName",
+                "doctorName",
+                "notes",
+                "time",
+                "expires",
+                "size",
+                "url",
+                "code",
+                "material",
+                "color",
+                "number"
+            ],
+            "title": "PandaScan"
+        },
+        "Service": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "clinic": {
+                    "description": "must be an objectId from the clinic collection and is optional",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "lab": {
+                    "description": "must be an objectId from the lab collection and is optional",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "must be a number and is optional",
+                    "type": "number"
+                },
+                "valueType": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "valueType",
+                "type"
+            ],
+            "title": "Service"
+        },
+        "User": {
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "clinic": {
+                    "description": "must be an objectId from the clinic collection and is optional",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "must be a string and is optional",
+                    "type": "string"
+                },
+                "lab": {
+                    "description": "must be an objectId from the lab collection and is optional",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                },
+                "permissions": {
+                    "description": "must be an array of strings and is optional",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "username": {
+                    "description": "must be a string and is required",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "username",
+                "password"
+            ],
+            "title": "User"
+        }
+      }
+    }
+}
